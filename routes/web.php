@@ -38,6 +38,7 @@ Route::post('/registro', [RegisterController::class, 'addRegister' ]);
 #agregamos el modelo seguido de : para poner el username como slug en la URL
 Route::get('/{user:username}', [PostController::class, 'index' ])->name('muroUser');
 Route::get('/posts/registro', [PostController::class, 'registro' ])->name('registroPost');
+Route::post('/posts/registro', [PostController::class, 'store' ]);
 
 
 

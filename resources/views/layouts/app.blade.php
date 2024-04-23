@@ -8,7 +8,6 @@
     <title>@yield('titulo')</title>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer type="module"></script>
 
 </head>
 
@@ -36,7 +35,8 @@
         {{-- llamamos al contenido que se le debe pasar al invocar este template  --}}
         @yield('contenido')
     </div>
-    
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>
