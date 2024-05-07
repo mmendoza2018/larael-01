@@ -17,9 +17,9 @@
             </div>
             <div class="w-3/6">
                 <label>Titulo</label>
-                <input type="text" name="titulo" class="input input-bordered w-full">
+                <input type="text" name="title" class="input input-bordered w-full">
                 <label>Descripcion</label>
-                <input type="text" name="descripcion" class="input input-bordered w-full">
+                <input type="text" name="description" class="input input-bordered w-full">
                 <button class="btn btn-success" type="submit">Enviar</button>
             </div>
         </div>

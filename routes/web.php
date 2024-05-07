@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* //como llamar un view directamente en la ruta
+//como llamar un view directamente en la ruta
 Route::get('/', function () {
     return view('welcome');
-}); */
+});
 
 
 #login

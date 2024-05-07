@@ -44,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // la convencion para hacer relaciones en este caso para nombrar a la funcion se hace en plural
+    // ya que un usuarios puede tener N POSTS
+    //para llamar a la relacion en tinker debemos hacerlo con el nombre de esta clase
+    public function posts () 
+    {
+        return $this->hasMany(Post::class);
+    }
 }

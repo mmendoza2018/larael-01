@@ -45,12 +45,12 @@ if (document.getElementById("dropzone")) {
 // Agregamos un evento 'submit' al formulario utilizando delegación de eventos
 document.addEventListener('submit', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
-    var formData2, _iterator, _step, pair, URL, options, response, dataResponse;
+    var formData2, _iterator, _step, pair, URL, options, response, dataResponse, Toast;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           if (!event.target.matches('#registroPost')) {
-            _context.next = 14;
+            _context.next = 24;
             break;
           }
           // Evitamos el comportamiento por defecto del formulario
@@ -69,25 +69,53 @@ document.addEventListener('submit', /*#__PURE__*/function () {
           } finally {
             _iterator.f();
           }
+          _context.prev = 5;
           URL = '/posts/registro';
           options = {
             method: 'POST',
             body: formData2
           };
-          _context.next = 9;
+          _context.next = 10;
           return fetch(URL, options);
-        case 9:
+        case 10:
           response = _context.sent;
-          _context.next = 12;
-          return response.text();
-        case 12:
+          _context.next = 13;
+          return response.json();
+        case 13:
           dataResponse = _context.sent;
-          console.log('dataResponse :>> ', dataResponse);
-        case 14:
+          console.log('dataResponse :>> ', dataResponse.errors);
+          if (response.ok) {
+            _context.next = 17;
+            break;
+          }
+          throw new Error();
+        case 17:
+          _context.next = 24;
+          break;
+        case 19:
+          _context.prev = 19;
+          _context.t0 = _context["catch"](5);
+          console.log(_context.t0);
+          Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: function didOpen(toast) {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
+        case 24:
         case "end":
           return _context.stop();
       }
-    }, _callee);
+    }, _callee, null, [[5, 19]]);
   }));
   return function (_x) {
     return _ref.apply(this, arguments);

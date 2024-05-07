@@ -35,13 +35,33 @@ document.addEventListener('submit', async function(event) {
           formData2.append(pair[0], pair[1]);
       }
 
-      const URL = '/posts/registro';
-      const options = {
-        method: 'POST',
-        body: formData2
+      try {
+        const URL = '/posts/registro';
+        const options = {
+          method: 'POST',
+          body: formData2
+        }
+        const response = await fetch(URL, options);
+        const dataResponse = await response.json();
+        console.log('dataResponse :>> ', dataResponse);
+        if(!response.ok) throw new Error();
+        
+      } catch (error) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
       }
-      const response = await fetch(URL, options);
-      const dataResponse = await response.text();
-      console.log('dataResponse :>> ', dataResponse);
   }
 });
